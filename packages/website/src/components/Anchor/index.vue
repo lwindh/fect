@@ -1,35 +1,22 @@
 <template>
   <div ref="anchorRef" class="fect-doc__anchor">
-    <fe-link>
+    <fe-link :href="`#${anchor}`" :id="anchor">
+      <paperclip :size="20" color="var(--success-default)" v-show="visible" />
+      <fe-spacer inline :x="0.2" />
       <slot />
     </fe-link>
-    <span :id="tar" class="fect-doc__anchor-virtual" />
-    <span class="fect-doc__anchor-icon">
-      <svg
-        viewBox="0 0 24 24"
-        width="100%"
-        height="100%"
-        stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        fill="none"
-        shape-rendering="geometricPrecision"
-        style="color: currentColor"
-      >
-        <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
-        <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" /></svg
-    ></span>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
+import { useState, useEventListener } from '@fect-ui/vue-hooks'
 export default defineComponent({
   name: 'Anchor',
   setup(props, { slots }) {
-    const tar = ref<string>('')
+    const [anchor, setAnchor] = useState<string>('')
     const anchorRef = ref<HTMLDivElement>()
+    const [visible, setVisible] = useState<boolean>(false)
 
     const anchorEncode = (text: string) => {
       if (!text) return ''
@@ -38,64 +25,46 @@ export default defineComponent({
     onMounted(() => {
       if (anchorRef.value) {
         const el = anchorRef.value.innerText
-        tar.value = anchorEncode(el)
+        setAnchor(anchorEncode(el))
       }
     })
+
+    useEventListener('mouseenter', () => setVisible(true), { target: anchorRef })
+
+    useEventListener('mouseleave', () => setVisible(false), { target: anchorRef })
+
     return {
-      tar,
       anchorRef,
+      anchor,
+      visible,
     }
   },
 })
 </script>
 
 <style lang="less" scoped>
-.fect-doc__anchor {
-  position: relative;
-  color: inherit;
-  vertical-align: middle;
-  font-size: inherit;
-}
-.fect-doc__anchor a {
-  color: inherit;
-  font-size: inherit;
-}
+.fect-doc {
+  &__anchor {
+    color: inherit;
+    vertical-align: middle;
+    font-size: inherit;
+    font-size: 1rem;
+    > .fect-link {
+      color: inherit;
+      position: relative;
+      svg {
+        position: absolute;
+        left: -20px;
+      }
+    }
 
-.fect-doc__anchor-virtual {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-}
-
-.fect-doc__anchor-icon {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  left: -1.2em;
-  top: 50%;
-  transform: translate(-25%, -50%);
-  position: absolute;
-  font-size: inherit;
-  opacity: 0;
-  visibility: hidden;
-  width: 1em;
-  height: 1em;
-  margin-top: 0;
-  color: var(--accents-3);
-}
-
-.fect-doc__anchor:hover > .fect-doc__anchor-icon {
-  opacity: 1;
-  visibility: visible;
-}
-
-@media only screen and (max-width: 650px) {
-  .fect-doc__anchor:hover > .fect-doc__anchor-icon {
-    opacity: 0;
+    @media only screen and (max-width: 650px) {
+      > .fect-link {
+        svg {
+          display: none;
+        }
+      }
+    }
   }
 }
 </style>

@@ -4,14 +4,14 @@
   "description": "A Website ",
   "main": "index.js",
   "scripts": {
-    "dev": "non dev"
+    "dev": "non dev",
+    "build": "non build"
   },
   "keywords": [],
   "author": "XeryYue",
   "license": "MIT",
   "devDependencies": {
     "prismjs": "^1.23.0",
-    "vue-prism-component": "^2.0.0",
     "vue-router": "^4.0.8",
     "@fect-ui/cli": "1.0.0",
     "@fect-ui/vue-icons": "^0.1.7",
