@@ -1,3 +1,7 @@
+# Progress / 进度条
+
+展示事件或与之相关的任务进展
+
 <playground
   title="默认的"
   name="ex-progress-default"
@@ -15,8 +19,7 @@
   name="ex-progress-colors"
 />
 
-<fe-attributes>
-<fe-attributes-title title="Progress Props" />
+### Progress Props
 
 | 属性       | 描述               | 类型                        | 可选值                                     | 默认      |
 | ---------- | ------------------ | --------------------------- | ------------------------------------------ | --------- |
@@ -24,6 +27,3 @@
 | **max**    | 最大值             | `'number','string'`         | `-`                                        | `100`     |
 | **colors** | 在范围内自定义颜色 | `{ [key: number]: string }` | `-`                                        | `{}`      |
 | **type**   | 预定义的状体类型   | `'string'`                  | `'default', 'success', 'warning', 'error'` | `default` |
-| ...        | 原生属性           | `HTMLAttributes`            | `'class','id',...`                         | `-`       |
-
-</fe-attributes>

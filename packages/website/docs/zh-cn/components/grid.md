@@ -27,84 +27,55 @@
   name="ex-grid-auto"
  />
 
-<fe-attributes>
+### Grid Props
 
-<fe-attributes-title title="Grid Props" />
+| 属性             | 描述                                 | 类型           | 可选值                                  | 默认值       |
+| ---------------- | ------------------------------------ | -------------- | --------------------------------------- | ------------ |
+| **container**    | 设置 grid 组件为容器, 默认值:`false` | `boolean`      | `'true','false'`                        | `false`      |
+| **gap**          | 子组件的间距                         | `number`       | -                                       | `0`          |
+| **wrap**         | CSS 属性 "flex-wrap"，指定换行方式   | `Wrap`         | [WrapTypes](#wraptypes)                 | `wrap`       |
+| **justify**      | CSS 属性 "justify-content"           | `Justify`      | [JustifyTypes](#justifytypes)           | `flex-start` |
+| **alignItems**   | CSS 属性 "align-items"               | `AlignItems`   | [AlignItemsTypes](#alignitemstypes)     | `stretch`    |
+| **alignContent** | CSS 属性 "align-content"             | `AlignContent` | [AlignContentTypes](#aligncontenttypes) | `flex-start` |
+| **direction**    | CSS 属性 "flex-direction"            | `Direction`    | [DirectionTypes](#directiontypes)       | `row`        |
+| **xs**           | 栅格宽度，影响 `xs` 断点与更宽的屏幕 | `number`       | `0 - 24`, `boolean`                     | `false`      |
+| **sm**           | 栅格宽度，影响 `sm` 断点与更宽的屏幕 | `number`       | `0 - 24`, `boolean`                     | `false`      |
+| **md**           | 栅格宽度，影响 `md` 断点与更宽的屏幕 | `number`       | `0 - 24`, `boolean`                     | `false`      |
+| **lg**           | 栅格宽度，影响 `lg` 断点与更宽的屏幕 | `number`       | `0 - 24`, `boolean`                     | `false`      |
+| **xl**           | 栅格宽度，影响 `xl` 断点与更宽的屏幕 | `number`       | `0 - 24`, `boolean`                     | `false`      |
 
-| 属性             | 描述                                 | 类型             | 可选值                                  | 默认值       |
-| ---------------- | ------------------------------------ | ---------------- | --------------------------------------- | ------------ |
-| **container**    | 设置 grid 组件为容器, 默认值:`false` | `boolean`        | `'true','false'`                        | `false`      |
-| **gap**          | 子组件的间距                         | `number`         | -                                       | `0`          |
-| **wrap**         | CSS 属性 "flex-wrap"，指定换行方式   | `Wrap`           | [WrapTypes](#wrapTypes)                 | `wrap`       |
-| **justify**      | CSS 属性 "justify-content"           | `Justify`        | [JustifyTypes](#justifyTypes)           | `flex-start` |
-| **alignItems**   | CSS 属性 "align-items"               | `AlignItems`     | [AlignItemsTypes](#alignitemsTypes)     | `stretch`    |
-| **alignContent** | CSS 属性 "align-content"             | `AlignContent`   | [AlignContentTypes](#aligncontentTypes) | `flex-start` |
-| **direction**    | CSS 属性 "flex-direction"            | `Direction`      | [DirectionTypes](#directionTypes)       | `row`        |
-| **xs**           | 栅格宽度，影响 `xs` 断点与更宽的屏幕 | `number`         | `0 - 24`, `boolean`                     | `false`      |
-| **sm**           | 栅格宽度，影响 `sm` 断点与更宽的屏幕 | `number`         | `0 - 24`, `boolean`                     | `false`      |
-| **md**           | 栅格宽度，影响 `md` 断点与更宽的屏幕 | `number`         | `0 - 24`, `boolean`                     | `false`      |
-| **lg**           | 栅格宽度，影响 `lg` 断点与更宽的屏幕 | `number`         | `0 - 24`, `boolean`                     | `false`      |
-| **xl**           | 栅格宽度，影响 `xl` 断点与更宽的屏幕 | `number`         | `0 - 24`, `boolean`                     | `false`      |
-| ...              | 原生属性                             | `HTMLAttributes` | `'id', 'class', ...`                    | -            |
-
-</fe-attributes>
-
-<fe-attributes>
-  
-<fe-attributes-title title="WrapTypes" />
+### WrapTypes
 
 | 类型          | 可选值                             |     |
 | ------------- | ---------------------------------- | --- |
 | **WrapTypes** | `'nowrap', 'wrap', 'wrap-reverse'` |     |
 
-</fe-attributes>
-
-<fe-attributes>
-
-<fe-attributes-title title="JustifyTypes" />
+### JustifyTypes
 
 | 类型             | 可选值                                                                           |     |
 | ---------------- | -------------------------------------------------------------------------------- | --- |
 | **JustifyTypes** | `'flex-start','center','flex-end','space-between','space-around','space-evenly'` |     |
 
-</fe-attributes>
-
-<fe-attributes>
-
-<fe-attributes-title title="AlignTypes" />
+### AlignTypes
 
 | 类型           | 可选值                                                   |     |
 | -------------- | -------------------------------------------------------- | --- |
 | **AlignTypes** | `'flex-start','center','flex-end','stretch', 'baseline'` |     |
 
-</fe-attributes>
-
-<fe-attributes>
-
-<fe-attributes-title title="AlignContentTypes" />
+### AlignContentTypes
 
 | 类型           | 可选值                                                                       |     |
 | -------------- | ---------------------------------------------------------------------------- | --- |
 | **AlignTypes** | `'stretch','flex-start','center','flex-end', 'space-between','space-around'` |     |
 
-</fe-attributes>
-
-<fe-attributes>
-
-<fe-attributes-title title="DirectionTypes" />
+### DirectionTypes
 
 | 类型           | 可选值                                             |     |
 | -------------- | -------------------------------------------------- | --- |
 | **AlignTypes** | `'row', 'row-reverse', 'column', 'column-reverse'` |     |
 
-</fe-attributes>
+### 断点值
 
-<fe-attributes>
-
-<fe-attributes-title title="断点值" />
-
-<fe-card>
-  
 <fe-code block>
 xs: { min: '0', max: '650px' },
 <br/>
@@ -117,7 +88,3 @@ lg: { min: '1280px', max: '1920px' },
 xl: { min: '1920px', max: '10000px' },
 
 </fe-code>
-
-</fe-card>
-
-</fe-attributes>

@@ -1,10 +1,10 @@
 import { App } from 'vue'
-import Attributes from './Attributes/index.vue'
-import AttributesTitle from './Attributes/attributes-title.vue'
-import Logo from './Logo/index.vue'
-import Playground from './Playground/index.vue'
 
-const components = [Attributes, AttributesTitle, Playground, Logo]
+import Playground from './Playground/index.vue'
+import AttributeTitle from './attributes/attributes-title.vue'
+import Attribtes from './attributes/index.vue'
+
+const components = [Playground, Attribtes, AttributeTitle]
 
 const install = (vue: App) => {
   components.map((component) => {

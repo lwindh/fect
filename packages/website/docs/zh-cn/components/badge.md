@@ -26,46 +26,28 @@
   desc="提供一个固定徽标的容器"
 />
 
-<fe-attributes>
-  
-<fe-attributes-title title="Badge Props" />
+### Badge Props
 
 | 属性     | 描述               | 类型                        | 可选值                      | 默认      |
 | -------- | ------------------ | --------------------------- | --------------------------- | --------- |
 | **size** | 组件大小           | `string`                    | [NormalSizes](#normalsizes) | `medium`  |
 | **type** | 组件类型           | [NormalTypes](#normaltypes) | [NormalTypes](#normaltypes) | `default` |
 | **dot**  | 忽略内容并显示圆点 | `'boolean'`                 | `-`                         | `-`       |
-| ...      | 原生属性           | `HTMLAttributes`            | `'class','id',...`          | `-`       |
 
-</fe-attributes>
+### BadgeAnchor Props
 
-<fe-attributes>
+| 属性          | 描述           | 类型     | 可选值                                               | 默认         |
+| ------------- | -------------- | -------- | ---------------------------------------------------- | ------------ |
+| **placement** | 固定徽标的位置 | `string` | `'topLeft', 'topRight', 'bottomLeft', 'bottomRight'` | `'topRight'` |
 
-<fe-attributes-title title="BadgeAnchor Props" />
+### NormalSizes
 
-| 属性          | 描述           | 类型             | 可选值                                               | 默认         |
-| ------------- | -------------- | ---------------- | ---------------------------------------------------- | ------------ |
-| **placement** | 固定徽标的位置 | `string`         | `'topLeft', 'topRight', 'bottomLeft', 'bottomRight'` | `'topRight'` |
-| ...           | 原生属性       | `HTMLAttributes` | `'class','id',...`                                   | `-`          |
-
-</fe-attributes>
-
-<fe-attributes>
-
-<fe-attributes-title title="NormalSizes" />
-
-| 类型 可选值     |
+| 类型 可选值     |                                      |
 | --------------- | ------------------------------------ |
 | **NormalSizes** | `'mini', 'small', 'medium', 'large'` |
 
-</fe-attributes>
-
-<fe-attributes>
-
-<fe-attributes-title title="NormalTypes" />
+### NormalTypes
 
 | 类型            | 可选值                                     |
 | --------------- | ------------------------------------------ |
 | **NormalTypes** | `'default', 'success', 'warning', 'error'` |
-
-</fe-attributes>

@@ -1,9 +1,8 @@
 <template>
   <div class="fect-doc__sider">
-    <widgets />
-    <div v-for="(route, idx) in routes" :key="route + idx" class="fect-doc__route-content">
+    <div v-for="(route, idx) in routeList" :key="idx + route.name" class="fect-doc__route-content">
       <span class="title">{{ route.name }}</span>
-      <div class="fect-doc__route-children" v-for="_ in route.children" :key="_">
+      <div class="fect-doc__route-children" v-for="_ in route.children" :key="_.title">
         <active-cate :to="_.route.name" :routeName="_.title" :color="setActive(_.route.name)" />
       </div>
     </div>
@@ -12,29 +11,30 @@
 
 <script lang="ts">
 import { useRouter } from 'vue-router'
-import { defineComponent, reactive, toRefs, watch } from 'vue'
-import { zhRoutes } from '../../../docs/zh-cn'
+import { defineComponent, computed } from 'vue'
+import { zhRoutes, zhGuideRoutes } from '../../../docs/zh-cn'
 import ActiveCate from './active-cate.vue'
-import Widgets from './widgets.vue'
-import { useState } from '@fect-ui/vue-hooks'
+import { useProvider } from '@fect-ui/vue-hooks'
+import { webSiteProvide, WEB_SITE_KEY } from '../utils/website-context'
 
 export default defineComponent({
-  components: { ActiveCate, Widgets },
+  components: { ActiveCate },
   name: 'SideBar',
   setup() {
-    const Routes = reactive({ routes: zhRoutes })
+    const { context } = useProvider<webSiteProvide>(WEB_SITE_KEY)
     const router = useRouter()
-    const [title, setTitle] = useState<string>('')
-    const setActive = (route) => {
+    const setActive = (route: string) => {
       const active = router.currentRoute.value.name === route
-      active && setTitle(`${route} | Vue - Fect UI`)
       return active
     }
 
-    watch(title, (pre) => (document.title = pre))
+    const routeList = computed(() => {
+      if (context!.deploy.value === 'guide') return zhGuideRoutes
+      return zhRoutes
+    })
 
     return {
-      ...toRefs(Routes),
+      routeList,
       setActive,
     }
   },
@@ -57,7 +57,12 @@ export default defineComponent({
   }
   @media only screen and (max-width: 650px) {
     &__sider {
-      display: none;
+      top: 0;
+      left: 0;
+      width: 60vw;
+      height: 100%;
+      z-index: 300;
+      position: static;
     }
   }
   &__route-content {

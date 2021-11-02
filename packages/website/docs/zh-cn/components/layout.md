@@ -12,9 +12,7 @@
 
 <playground title="对齐" desc="使用 justify 与 align 属性以不同方式对齐列" name="ex-layout-align" />
 
-<fe-attributes>
-
-<fe-attributes-title title="Row Props" />
+### Row Props
 
 | 属性        | 描述           | 类型                | 可选值                                                   | 默认    |
 | ----------- | -------------- | ------------------- | -------------------------------------------------------- | ------- |
@@ -22,19 +20,11 @@
 | **gutter**  | 子元素列的间距 | `'string','number'` | `-`                                                      | `0`     |
 | **justify** | 水平对齐方式   | `string`            | `'start','end','center','space-around','space-between',` | `start` |
 | **align**   | 垂直对齐方式   | `string`            | `'top', 'middle', 'bottom'`                              | `top`   |
-| ...         | 原生属性       | `HTMLAttributes`    | `'class','id',...`                                       | `-`     |
 
-</fe-attributes>
+### Col Props
 
-<fe-attributes>
-
-<fe-attributes-title title="Col Props" />
-
-| 属性       | 描述               | 类型                | 可选值             | 默认  |
-| ---------- | ------------------ | ------------------- | ------------------ | ----- |
-| **tag**    | 自定义容器元素     | `HTMLElement`       | `-`                | `div` |
-| **span**   | 每列占据的网格大小 | `'string','number'` | `'0-24'`           | `24`  |
-| **offset** | 当前列的偏移位置   | `'string','number'` | `-`                | `0`   |
-| ...        | 原生属性           | `HTMLAttributes`    | `'class','id',...` | `-`   |
-
-</fe-attributes>
+| 属性       | 描述               | 类型                | 可选值   | 默认  |
+| ---------- | ------------------ | ------------------- | -------- | ----- |
+| **tag**    | 自定义容器元素     | `HTMLElement`       | `-`      | `div` |
+| **span**   | 每列占据的网格大小 | `'string','number'` | `'0-24'` | `24`  |
+| **offset** | 当前列的偏移位置   | `'string','number'` | `-`      | `0`   |

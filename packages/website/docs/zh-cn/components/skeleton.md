@@ -26,35 +26,27 @@ desc="大多时候, 骨架屏都被用来渲染列表, 当我们需要在从服�
 name="ex-skeleton-more"
 />
 
-<fe-attributes>
-<fe-attributes-title title="Skeleton Props" />
+### Skeleton Props
 
-| 属性          | 描述                                       | 类型                                        | 可选值             | 默认      |
-| ------------- | ------------------------------------------ | ------------------------------------------- | ------------------ | --------- |
-| **loading**   | 控制是否显示真实的 `DOM`                   | `boolean`                                   | `'true','false'`   | `false`   |
-| **rows**      | 骨架屏段落数量                             | `number`                                    | -                  | `0`       |
-| **animated**  | 是否启用骨架屏动画                         | `boolean`                                   | `'true','false'`   | `false`   |
-| **rowsWidth** | 段落占位图宽度，可传数组来设置每一行的宽度 | `number` , `string` , `string[]`,`number[]` | `100%`             | `initial` |
-| ...           | 原生属性                                   | `HTMLAttributes`                            | `'class','id',...` | `-`       |
+<attributes>
 
-</fe-attributes>
+| 属性          | 描述                                       | 类型                                        | 可选值           | 默认      |
+| ------------- | ------------------------------------------ | ------------------------------------------- | ---------------- | --------- |
+| **loading**   | 控制是否显示真实的 `DOM`                   | `boolean`                                   | `'true','false'` | `false`   |
+| **rows**      | 骨架屏段落数量                             | `number`                                    | -                | `0`       |
+| **animated**  | 是否启用骨架屏动画                         | `boolean`                                   | `'true','false'` | `false`   |
+| **rowsWidth** | 段落占位图宽度，可传数组来设置每一行的宽度 | `number` , `string` , `string[]`,`number[]` | `100%`           | `initial` |
 
-<fe-attributes>
+</attributes>
 
-<fe-attributes-title title="SkeletonItem Props" />
+### SkeletonItem Props
 
 | 属性         | 描述                 | 类型                            | 可选值                          | 默认   |
 | ------------ | -------------------- | ------------------------------- | ------------------------------- | ------ |
 | **variable** | 显示的占位元素的样式 | [VariableTypes](#variabletypes) | [VariableTypes](#variabletypes) | `text` |
-| ...          | 原生属性             | `HTMLAttributes`                | `'class','id',...`              | `-`    |
 
-</fe-attributes>
-
-<fe-attributes>
-<fe-attributes-title title="VariableTypes" />
+### VariableTypes
 
 | 类型              | 可选值                                                               |
 | ----------------- | -------------------------------------------------------------------- |
 | **VariableTypes** | `'p', 'text', 'h1', 'h3','rect','circle','image','button','caption'` |
-
-</fe-attributes>

@@ -2,37 +2,58 @@
 
 展示用户头像信息
 
-<playground title="默认的" name="ex-avatar-default" desc="Avatar 组件包含了圆形与方形" />
+### 默认的
 
-<playground title="大小" name="ex-avatar-size" desc="你可以指定组件大小"  />
+展示用户的基本信息
 
-<playground title="文本" name="ex-avatar-text" desc="在头像框内用文本替代" />
+```html
+<fe-avatar src="https://avatars.githubusercontent.com/u/52351095?v=4" /> <fe-avatar text="fect" />
+```
 
-<playground title="头像组" name="ex-avatar-stacked" desc="多个头像框可以堆叠在一起" />
+### 尺寸
 
-<fe-attributes>
+指定图像的大小
 
-<fe-attributes-title title="Avatar Props" />
+```html
+<fe-avatar src="https://avatars.githubusercontent.com/u/52351095?v=4" size="mini" />
+<fe-avatar src="https://avatars.githubusercontent.com/u/52351095?v=4" size="small" />
+<fe-avatar src="https://avatars.githubusercontent.com/u/52351095?v=4" size="medium" />
+<fe-avatar src="https://avatars.githubusercontent.com/u/52351095?v=4" size="large" />
+```
 
-| 属性          | 描述                    | 类型                | 可选值                            | 默认     |
-| ------------- | ----------------------- | ------------------- | --------------------------------- | -------- |
-| **stacked**   | 是否堆叠显示            | _boolean_           | -                                 | `false`  |
-| **isSquare**  | 是否为方形头像          | `boolean`           | -                                 | `false`  |
-| **size**      | 头像大小                | `string`            | `'mini','small','medium','large'` | `medium` |
-| **text**      | 文本,无图像链接才会显示 | `string`,`number`   | -                                 | `-`      |
-| **src**       | 图像链接                | `string`            | -                                 | `-`      |
-| **className** | 图像容器设置 class      | `string`            | -                                 | `-`      |
-| ...           | 原生属性                | `ImgHTMLAttributes` | `'alt','class',...`               | `-`      |
+### 组
 
-</fe-attributes>
+多个头像框可以堆叠在一起
 
-<fe-attributes>
+```html
+<fe-avatar-group>
+  <fe-avatar src="https://avatars.githubusercontent.com/u/52351095?v=4" size="small" stacked />
+  <fe-avatar src="https://avatars.githubusercontent.com/u/52351095?v=4" size="small" stacked />
+  <fe-avatar src="https://avatars.githubusercontent.com/u/52351095?v=4" size="small" stacked />
+  <fe-avatar src="https://avatars.githubusercontent.com/u/52351095?v=4" size="small" stacked />
+</fe-avatar-group>
+<fe-spacer />
+<fe-avatar-group :count="12">
+  <fe-avatar src="https://avatars.githubusercontent.com/u/52351095?v=4" is-square size="small" stacked />
+  <fe-avatar src="https://avatars.githubusercontent.com/u/52351095?v=4" is-square size="small" stacked />
+  <fe-avatar src="https://avatars.githubusercontent.com/u/52351095?v=4" is-square size="small" stacked />
+  <fe-avatar src="https://avatars.githubusercontent.com/u/52351095?v=4" is-square size="small" stacked />
+</fe-avatar-group>
+```
 
-<fe-attributes-title title="AvatarGroup Props" />
+### Avatar Props
 
-| 属性      | 描述     | 类型              | 可选值              | 默认 |
-| --------- | -------- | ----------------- | ------------------- | ---- |
-| **count** | 数量     | `string`,`number` | --                  | --   |
-| ...       | 原生属性 | `HTMLAttributes`  | `'alt','class',...` | `-`  |
+| 属性           | 描述                    | 类型              | 可选值                            | 默认     |
+| -------------- | ----------------------- | ----------------- | --------------------------------- | -------- |
+| **stacked**    | 是否堆叠显示            | `boolean`         | -                                 | `false`  |
+| **is-square**  | 是否为方形头像          | `boolean`         | -                                 | `false`  |
+| **size**       | 头像大小                | `string`          | `'mini','small','medium','large'` | `medium` |
+| **text**       | 文本,无图像链接才会显示 | `string`,`number` | -                                 | `-`      |
+| **src**        | 图像链接                | `string`          | -                                 | `-`      |
+| **class-name** | 图像容器设置 class      | `string`          | -                                 | `-`      |
 
-</fe-attributes>
+### AvatarGroup Props
+
+| 属性      | 描述 | 类型              | 可选值 | 默认 |
+| --------- | ---- | ----------------- | ------ | ---- |
+| **count** | 数量 | `string`,`number` | --     | --   |

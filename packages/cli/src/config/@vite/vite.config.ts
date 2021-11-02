@@ -20,7 +20,7 @@ export const useDevConfig = (): InlineConfig => {
         include: [/\.vue$/, /\.md$/],
       }),
       Jsx(),
-      ...getNonConf('plugins').map((plugin) => plugin.default()),
+      ...getNonConf('plugins'),
     ],
   }
 }
@@ -29,10 +29,10 @@ export const useBuildConfig = (): InlineConfig => {
   const devConf = useDevConfig()
   return {
     ...devConf,
-    base: './',
+    base: '/',
     mode: 'production',
     build: {
-      sourcemap: 'inline',
+      sourcemap: false,
       brotliSize: false,
       rollupOptions: {
         input: { main: getNonConf('entry') },

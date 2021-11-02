@@ -8,14 +8,9 @@
 
 <playground title="阴影" desc="给组件容器添加阴影" name="ex-card-shadow"/>
 
-<fe-attributes>
+### Card Props
 
-<fe-attributes-title title="Card Props" />
-
-| 属性          | 描述                 | 类型             | 可选值             | 默认    |
-| ------------- | -------------------- | ---------------- | ------------------ | ------- |
-| **hoverable** | 是否在悬停时增加阴影 | `boolean`        | `-`                | `false` |
-| **shadow**    | 是否总是显示阴影     | `boolean`        | `-`                | `false` |
-| ...           | 原生属性             | `HTMLAttributes` | `'class','id',...` | `-`     |
-
-</fe-attributes>
+| 属性          | 描述                 | 类型      | 可选值 | 默认    |
+| ------------- | -------------------- | --------- | ------ | ------- |
+| **hoverable** | 是否在悬停时增加阴影 | `boolean` | `-`    | `false` |
+| **shadow**    | 是否总是显示阴影     | `boolean` | `-`    | `false` |

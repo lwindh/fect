@@ -8,14 +8,10 @@
 
 <playground title="支持静态方法" desc="Toast控件支持静态方法调用" name="ex-toast-static" />
 
-<fe-attributes>
-  
-<fe-attributes-title title="Toast Props" />
+### Toast Props
 
 | 属性         | 描述             | 类型                | 可选值                                     | 默认      |
 | ------------ | ---------------- | ------------------- | ------------------------------------------ | --------- |
 | **text**     | 通知消息的文本   | `'string','number'` | `-`                                        | `-`       |
 | **type**     | 通知框的主题     | `string`            | `'default', 'success', 'warning', 'error'` | `default` |
 | **duration** | 消息框的展示时间 | `'string','number'` | `-`                                        | `4500`    |
-
-</fe-attributes>
