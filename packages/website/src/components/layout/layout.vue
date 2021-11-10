@@ -1,5 +1,6 @@
 <template>
   <side-bar v-if="mobile" />
+  <div class="fect-doc__side-bar--shadow" />
   <fe-drawer class="drawer" placement="left" v-model="visible" :round="false">
     <side-bar v-if="!mobile" @click="visible = false" />
   </fe-drawer>
@@ -8,7 +9,6 @@
     <div class="fect-doc__article">
       <router-view />
     </div>
-    <div class="fect-doc__widget-list"></div>
   </main>
 </template>
 
@@ -42,21 +42,24 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .fect-doc {
+  &__side-bar {
+    &--shadow {
+      width: 200px;
+      height: 100%;
+      flex-shrink: 0;
+    }
+  }
   &__main {
+    box-sizing: border-box;
     display: flex;
     width: 100%;
-    padding-left: 200px;
     padding-bottom: 150px;
   }
   &__article {
-    flex: 3;
     box-sizing: border-box;
     max-width: 50rem;
   }
-  &__widget-list {
-    position: relative;
-    flex: 1;
-  }
+
   @media only screen and (max-width: 650px) {
     &__main {
       width: 90vw;
@@ -65,8 +68,10 @@ export default defineComponent({
       padding-left: 0;
       display: block;
     }
-    &__widget-list {
-      display: none;
+  }
+  @media only screen and (min-width: 1440px) {
+    &__main {
+      justify-content: center;
     }
   }
 }

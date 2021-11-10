@@ -1,39 +1,67 @@
-<playground
-  title="默认的"
-  name="ex-grid-default"
-/>
+# Grid / 栅格
 
-<playground 
-  title="流体布局" 
-  desc="容器的自动换行与缩放"
-  name="ex-grid-fluid"
- />
+### 默认的
 
-<playground 
-  title="响应式布局" 
-  desc="在不同屏幕宽度下自动使用不同布局方式"
-  name="ex-grid-responsive"
- />
+:::playground
 
-<playground 
-  title="隐藏元素" 
-  desc="当单位大小为 0 时会自动隐藏当前元素"
-  name="ex-grid-hidden"
- />
+grid/default.vue
 
-<playground 
-  title="自动宽度" 
-  desc="自动分配剩余宽度"
-  name="ex-grid-auto"
- />
+:::
+
+### 流体布局
+
+容器的自动换行与缩放
+
+:::playground
+
+grid/fluid.vue
+
+:::
+
+### 响应式布局
+
+在不同屏幕宽度下自动使用不同布局方式
+
+:::playground
+
+grid/responsive.vue
+
+:::
+
+### 隐藏元素
+
+当单位大小为 `0` 时会自动隐藏当前元素
+
+:::playground
+
+grid/hidden.vue
+
+:::
+
+### 自动宽度
+
+自动分配剩余宽度
+
+:::playground
+
+grid/auto.vue
+
+:::
+
+### 列
+
+根据`count`和`col`进行布局(会导致`grid`属性失效)
+
+:::playground
+
+grid/col.vue
+
+:::
 
 ### Grid Props
 
 | 属性             | 描述                                 | 类型           | 可选值                                  | 默认值       |
 | ---------------- | ------------------------------------ | -------------- | --------------------------------------- | ------------ |
-| **container**    | 设置 grid 组件为容器, 默认值:`false` | `boolean`      | `'true','false'`                        | `false`      |
-| **gap**          | 子组件的间距                         | `number`       | -                                       | `0`          |
-| **wrap**         | CSS 属性 "flex-wrap"，指定换行方式   | `Wrap`         | [WrapTypes](#wraptypes)                 | `wrap`       |
 | **justify**      | CSS 属性 "justify-content"           | `Justify`      | [JustifyTypes](#justifytypes)           | `flex-start` |
 | **alignItems**   | CSS 属性 "align-items"               | `AlignItems`   | [AlignItemsTypes](#alignitemstypes)     | `stretch`    |
 | **alignContent** | CSS 属性 "align-content"             | `AlignContent` | [AlignContentTypes](#aligncontenttypes) | `flex-start` |
@@ -43,6 +71,16 @@
 | **md**           | 栅格宽度，影响 `md` 断点与更宽的屏幕 | `number`       | `0 - 24`, `boolean`                     | `false`      |
 | **lg**           | 栅格宽度，影响 `lg` 断点与更宽的屏幕 | `number`       | `0 - 24`, `boolean`                     | `false`      |
 | **xl**           | 栅格宽度，影响 `xl` 断点与更宽的屏幕 | `number`       | `0 - 24`, `boolean`                     | `false`      |
+
+### GridGroup Props
+
+| 属性      | 描述                               | 类型     | 可选值                  | 默认值 |
+| --------- | ---------------------------------- | -------- | ----------------------- | ------ |
+| **gap**   | 子组件的间距                       | `number` | -                       | `0`    |
+| **wrap**  | CSS 属性 "flex-wrap"，指定换行方式 | `Wrap`   | [WrapTypes](#wraptypes) | `wrap` |
+| **col**   | 等分的栅格数                       | `number` | `0 - 24`                | `0`    |
+| **count** | 栅格的元素个数                     | `number` | `-`                     | `0`    |
+| ...       | 继承 Grid 的所有属性               | `-`      | `-`                     | `-`    |
 
 ### WrapTypes
 
