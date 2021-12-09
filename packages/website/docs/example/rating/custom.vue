@@ -1,7 +1,9 @@
 <template>
   <div>
     <fe-rating v-model="val" locked @change="handleChange">
-      <template #icon><github /> </template>
+      <template #icon>
+        <Github />
+      </template>
     </fe-rating>
   </div>
 </template>
@@ -13,6 +15,6 @@ export default {
   setup() {
     const val = ref(3)
     return { val }
-  },
+  }
 }
 </script>

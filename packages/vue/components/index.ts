@@ -1,6 +1,4 @@
-const version = '1.0.3'
-
-import '@fect-ui/themes'
+const version = '1.1.0-rc.0'
 import { App } from 'vue'
 import { Avatar } from './avatar'
 import { AvatarGroup } from './avatar-group'
@@ -20,6 +18,8 @@ import { Collapse } from './collapse'
 import { CollapseGroup } from './collapse-group'
 import { Dot } from './dot'
 import { Drawer } from './drawer'
+import { Form } from './form'
+import { FormItem } from './form-item'
 import { Grid } from './grid'
 import { GridGroup } from './grid-group'
 import { Image } from './image'
@@ -39,6 +39,7 @@ import { Select } from './select'
 import { SelectOption } from './select-option'
 import { Skeleton } from './skeleton'
 import { SkeletonItem } from './skeleton-item'
+import { Slider } from './slider'
 import { Snippet } from './snippet'
 import { Spacer } from './spacer'
 import { Spinner } from './spinner'
@@ -70,6 +71,8 @@ const components = [
   CollapseGroup,
   Dot,
   Drawer,
+  Form,
+  FormItem,
   Grid,
   GridGroup,
   Image,
@@ -89,6 +92,7 @@ const components = [
   SelectOption,
   Skeleton,
   SkeletonItem,
+  Slider,
   Snippet,
   Spacer,
   Spinner,
@@ -100,7 +104,7 @@ const components = [
   Tag,
   Teleport,
   Toast,
-  Tooltip,
+  Tooltip
 ]
 const install = (app: App) => {
   components.map((component: any) => {
@@ -130,6 +134,8 @@ export * from './collapse'
 export * from './collapse-group'
 export * from './dot'
 export * from './drawer'
+export * from './form'
+export * from './form-item'
 export * from './grid'
 export * from './grid-group'
 export * from './image'
@@ -149,6 +155,7 @@ export * from './select'
 export * from './select-option'
 export * from './skeleton'
 export * from './skeleton-item'
+export * from './slider'
 export * from './snippet'
 export * from './spacer'
 export * from './spinner'
@@ -166,5 +173,5 @@ export { install, version }
 
 export default {
   install,
-  version,
+  version
 }

@@ -1,6 +1,6 @@
 import { computed, ref, PropType, watch, defineComponent } from 'vue'
-import { useRealShape, useState, createName } from '../utils'
-import { useProvider } from '@fect-ui/vue-hooks'
+import { useRealShape, createName } from '../utils'
+import { useProvider, useState } from '@fect-ui/vue-hooks'
 import CollapseIcon from './collapse-icon'
 import { READONLY_COLLAPSE_KEY, CollapseProvide } from '../collapse-group/collapse-group'
 import './index.less'
@@ -19,12 +19,12 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      default: '',
+      default: ''
     },
     subtitle: String,
     subTag: String as PropType<keyof HTMLElementTagNameMap>,
     visible: Boolean,
-    shadow: Boolean,
+    shadow: Boolean
   },
   emits: ['update:visible'],
   setup(props, { slots, emit }) {
@@ -99,7 +99,7 @@ export default defineComponent({
           class="fect-collapse__expand"
           style={{
             visibility: visible.value ? 'visible' : 'hidden',
-            height: height.value,
+            height: height.value
           }}
         >
           <div class="fect-collapse__content" ref={expandRef}>
@@ -108,5 +108,5 @@ export default defineComponent({
         </div>
       </div>
     )
-  },
+  }
 })

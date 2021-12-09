@@ -1,24 +1,23 @@
-import { defineComponent, computed, watchEffect, ref } from 'vue'
-import { useProvider } from '@fect-ui/vue-hooks'
+import { defineComponent, computed, watchEffect } from 'vue'
+import { useProvider, useState } from '@fect-ui/vue-hooks'
 import PaginationItem from './pagination-item'
 import PaginationEllipsis from './pagination-ellipsis'
 import { READONLY_PAGINATION_KEY, PaginationProvide } from './type'
-import { useState } from '../utils'
 
 const PaginationPages = defineComponent({
   props: {
     current: {
       type: Number,
-      required: true,
+      required: true
     },
     count: {
       type: [Number],
-      required: true,
+      required: true
     },
     limit: {
       type: Number,
-      required: true,
-    },
+      required: true
+    }
   },
   setup(props, { slots, emit }) {
     const [beforeEllipsis, setBeforeEllipsis] = useState<boolean>(false)
@@ -130,7 +129,7 @@ const PaginationPages = defineComponent({
     }
 
     return () => <>{overlaod.value ? renderlessLimit() : renderNormal()}</>
-  },
+  }
 })
 
 export default PaginationPages

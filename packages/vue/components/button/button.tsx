@@ -1,5 +1,6 @@
 import { computed, ref, defineComponent } from 'vue'
-import { useState, createName, CustomCSSProperties } from '../utils'
+import { useState } from '@fect-ui/vue-hooks'
+import { createName, CustomCSSProperties } from '../utils'
 import { props } from './props'
 import ButtonLoading from './button-loading'
 import ButtonDrip from './button-drip'
@@ -52,7 +53,7 @@ export default defineComponent({
       const style: CustomCSSProperties = {
         '--button-hover-bg': bg,
         '--button-hover-border': border,
-        '--button-hover-color': color,
+        '--button-hover-color': color
       }
       return style
     })
@@ -89,6 +90,7 @@ export default defineComponent({
         class={`fect-button fect-button--${props.type} fect-button--${props.size} ${setButtonStatus.value}`}
         ref={buttonRef}
         style={setStyle.value}
+        type={props.htmlType}
         onClick={clickHandler}
       >
         {props.loading && <ButtonLoading loadType={props.loadType} />}
@@ -96,5 +98,5 @@ export default defineComponent({
         {renderContext()}
       </button>
     )
-  },
+  }
 })

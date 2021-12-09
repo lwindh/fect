@@ -7,13 +7,15 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 export default {
   name: 'ex-avatar-default',
   setup() {
     const img = 'https://avatars.githubusercontent.com/u/52351095?v=4'
+
     return {
-      img,
+      img
     }
-  },
+  }
 }
 </script>

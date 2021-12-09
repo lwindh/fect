@@ -1,6 +1,5 @@
 <template>
   <div class="icons-item" @click="onClick(icon)">
-    <!-- <fect-icon :icon="icon" /> -->
     <component :is="icon" />
     <p>{{ icon }}</p>
   </div>
@@ -10,13 +9,13 @@
 export default {
   name: 'IconCell',
   props: {
-    icon: String,
+    icon: String
   },
   emits: ['click'],
   setup(props, { emit }) {
     const onClick = (name) => emit('click', name)
     return { onClick }
-  },
+  }
 }
 </script>
 

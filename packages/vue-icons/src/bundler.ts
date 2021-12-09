@@ -31,17 +31,11 @@ class GenSvg extends EventEmitter {
     super.on('genPackages', async (next) => {
       Object.keys(this.svgMap).map((svg) => {
         const path = join(PACKAGE_PATH, `${svg}.tsx`)
-        const compoent = singleDefine(svg, replaceStyle(this.svgMap[svg]))
-        return outputFileSync(path, compoent)
+        const name = svg.charAt(0).toUpperCase() + svg.slice(1)
+        const component = singleDefine(name, replaceStyle(this.svgMap[svg]))
+        return outputFileSync(path, component)
       })
       await collect()
-      await next()
-    })
-  }
-
-  genSvgDir() {
-    super.on('genSvgDir', async (next) => {
-      Object.keys(this.svgMap).map((svg) => outputFileSync(join(SVG_PATH, `${svg}.svg`), this.svgMap[svg]))
       await next()
     })
   }
@@ -77,10 +71,8 @@ class GenSvg extends EventEmitter {
     let spinner: Ora
     spinner = ora('build icon ....').start()
     this.genPackages()
-    this.genSvgDir()
     this.compile()
     await this.getSource()
-    await this.asyncEmitter('genSvgDir')
     await this.asyncEmitter('genPackages')
     spinner.succeed('build successed~')
     await this.asyncEmitter('compile')

@@ -1,6 +1,6 @@
 import { defineComponent, computed, Slot } from 'vue'
 import { createProvider } from '@fect-ui/vue-hooks'
-import { createName, CustomCSSProperties } from '../utils'
+import { createName, CustomCSSProperties, assign } from '../utils'
 import { props } from './props'
 import { READONLY_GRID_GROUP_KEY } from './type'
 import { Grid } from '../grid'
@@ -14,7 +14,7 @@ const getGridStyle = (col: number): CustomCSSProperties => {
   col = Math.abs(col) > 24 ? 24 : col
   const width = 100 / col
   return {
-    '--grid-width': `${width}%`,
+    '--grid-width': `${width}%`
   }
 }
 
@@ -35,7 +35,7 @@ export default defineComponent({
       const gapStyle = getUnitGapStyle(gap)
       // work with dynamic system
       const style = { ...basisStyle, ...gapStyle }
-      if (!useGrid.value) return Object.assign(style, getDynamicStyle({ xs, sm, md, lg, xl }))
+      if (!useGrid.value) return assign(style, getDynamicStyle({ xs, sm, md, lg, xl }))
       const gridStyle = getGridStyle(col)
       return { ...style, ...gridStyle }
     })
@@ -73,5 +73,5 @@ export default defineComponent({
         </div>
       )
     }
-  },
+  }
 })

@@ -1,4 +1,4 @@
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 import { useProvider } from '@fect-ui/vue-hooks'
 import ModalAction from './modal-action'
 import ModalTitle from './modal-title'
@@ -31,7 +31,7 @@ const ModalWrapper = defineComponent({
     }
 
     return () => renderWrapper()
-  },
+  }
 })
 
 export default ModalWrapper

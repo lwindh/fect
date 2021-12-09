@@ -14,16 +14,15 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue'
-import { useProvider } from '@fect-ui/vue-hooks'
 import SideBar from '../side-bar/index.vue'
 import SubBar from '../side-bar/mobile-widget.vue'
-import { webSiteProvide, WEB_SITE_KEY } from '../utils/website-context'
+import { useWebsiteContext } from '../../website-context'
 
 export default defineComponent({
   name: 'Layout',
   components: { SideBar, SubBar },
   setup(props, { slots }) {
-    const { context } = useProvider<webSiteProvide>(WEB_SITE_KEY)
+    const { context } = useWebsiteContext()
     const visible = ref<boolean>(false)
 
     watch(context!.mobile, (pre) => {
@@ -34,9 +33,9 @@ export default defineComponent({
 
     return {
       visible,
-      mobile: context!.mobile,
+      mobile: context!.mobile
     }
-  },
+  }
 })
 </script>
 
@@ -58,6 +57,7 @@ export default defineComponent({
   &__article {
     box-sizing: border-box;
     max-width: 50rem;
+    width: 100%;
   }
 
   @media only screen and (max-width: 650px) {

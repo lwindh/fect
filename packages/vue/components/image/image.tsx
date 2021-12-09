@@ -1,5 +1,6 @@
 import { computed, ref, watchEffect, CSSProperties, defineComponent } from 'vue'
-import { useState, createName } from '../utils'
+import { useState } from '@fect-ui/vue-hooks'
+import { createName } from '../utils'
 import ImgSkeleton from './image-skeleton'
 import './index.less'
 
@@ -10,21 +11,21 @@ export default defineComponent({
   props: {
     src: {
       type: String,
-      default: '',
+      default: ''
     },
     skeleton: Boolean,
     maxDelay: {
       type: [String, Number],
-      default: 3000,
+      default: 3000
     },
     width: {
       type: [Number, String],
-      default: 'auto',
+      default: 'auto'
     },
     height: {
       type: [Number, String],
-      default: 'auto',
-    },
+      default: 'auto'
+    }
   },
   setup(props, { attrs }) {
     const imgRef = ref<HTMLImageElement>()
@@ -49,7 +50,7 @@ export default defineComponent({
       const { width, height } = props
       const style: CSSProperties = {
         width,
-        height,
+        height
       }
       return style
     })
@@ -69,5 +70,5 @@ export default defineComponent({
     )
 
     return () => renderNormal()
-  },
+  }
 })

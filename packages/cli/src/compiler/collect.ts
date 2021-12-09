@@ -2,6 +2,7 @@ import { readJsonSync, readdirSync, writeFile } from 'fs-extra'
 import { join } from 'path'
 import { USER_PACKAGES_JSON_PATH } from '../shared/constant'
 import { getNonConf } from '../shared/get-config'
+import { formatCode } from '../format/prettier'
 
 const PASCAL_REG = /(\w)(.+)/g
 
@@ -29,8 +30,6 @@ export const genPackagesEntry = async () => {
   const content = `
    
      const version = '${version}' ;
-   
-      import '@fect-ui/themes';
       import {App} from 'vue';
       ${genImport(pascalNames, dirs)}
       const components = [${pascalNames.map((_) => _)}];
@@ -58,5 +57,5 @@ export const genPackagesEntry = async () => {
    
       `
 
-  await writeFile(OUTPUT, content)
+  await writeFile(OUTPUT, formatCode(content))
 }

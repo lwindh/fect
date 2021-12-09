@@ -1,5 +1,7 @@
-import { computed, PropType, defineComponent } from 'vue'
-import { hasEmptry, createName, UnknowProp, NormalSizes } from '../utils'
+import { computed, PropType, defineComponent, watchEffect } from 'vue'
+import { createName, UnknowProp, hasEmptry } from '../utils'
+import { useState } from '@fect-ui/vue-hooks'
+import type { NormalSizes } from '../utils'
 import './index.less'
 
 const name = createName('Switch')
@@ -19,44 +21,49 @@ export default defineComponent({
   name,
   props: {
     modelValue: UnknowProp,
+    value: UnknowProp,
     checkedValue: {
       type: UnknowProp,
-      default: true,
+      default: true
     },
     inactiveValue: {
       type: UnknowProp,
-      default: false,
+      default: false
     },
     size: {
       type: String as PropType<NormalSizes>,
-      default: 'medium',
+      default: 'medium'
     },
-    disabled: Boolean,
+    disabled: Boolean
   },
   emits: ['change', 'update:modelValue'],
   setup(props, { emit }) {
-    const isChecked = () => props.modelValue === props.checkedValue
+    const [value, setValue] = useState<any>(null)
+
+    watchEffect(() => setValue(props.modelValue || props.value))
+
+    const isChecked = () => value.value === props.checkedValue
 
     const changeHandler = (e: Event) => {
       const reverse = isChecked() ? props.inactiveValue : props.checkedValue
       emit('update:modelValue', reverse)
       const selfEvent: SwitchEvent = {
         target: {
-          checked: props.modelValue,
+          checked: reverse
         },
         stopPropagation: e.stopPropagation,
         preventDefault: e.preventDefault,
-        nativeEvent: e,
+        nativeEvent: e
       }
       emit('change', selfEvent)
+      if (hasEmptry(props.value)) setValue(reverse)
     }
 
     const switchHandler = (e: Event) => {
       e.preventDefault()
       e.stopPropagation()
-      const { modelValue, disabled } = props
-      const isEmpty = hasEmptry(modelValue)
-      if (isEmpty || disabled) return
+      const { disabled } = props
+      if (disabled) return
       changeHandler(e)
     }
 
@@ -80,5 +87,5 @@ export default defineComponent({
         <div class={`fect-switch__slider ${setClass.value}`}></div>
       </label>
     )
-  },
+  }
 })

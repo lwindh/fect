@@ -1,5 +1,6 @@
 import { computed, PropType, watch, defineComponent } from 'vue'
-import { useState, createName, CustomCSSProperties, NormalTypes } from '../utils'
+import { useState } from '@fect-ui/vue-hooks'
+import { createName, CustomCSSProperties, NormalTypes } from '../utils'
 import RatingIcon from './rating-icon'
 
 import './index.less'
@@ -11,7 +12,7 @@ const getColor = (type: NormalTypes): string => {
     default: 'var(--primary-foreground)',
     success: 'var(--success-default)',
     warning: 'var(--warning-default)',
-    error: 'var(--error-default)',
+    error: 'var(--error-default)'
   }
   //  user may be entry types without NormalTypes
   return colors[type] || (colors.default as string)
@@ -22,17 +23,17 @@ export default defineComponent({
   props: {
     modelValue: {
       type: Number,
-      default: 0,
+      default: 0
     },
     type: {
       type: String as PropType<NormalTypes>,
-      default: 'default',
+      default: 'default'
     },
     count: {
       type: Number,
-      default: 5,
+      default: 5
     },
-    locked: Boolean,
+    locked: Boolean
   },
   emits: ['change', 'update:modelValue'],
   setup(props, { emit, slots }) {
@@ -46,7 +47,7 @@ export default defineComponent({
     const setSvgFillColor = computed(() => {
       const { type } = props
       return {
-        '--rating-svg-color': getColor(type),
+        '--rating-svg-color': getColor(type)
       } as CustomCSSProperties
     })
 
@@ -96,5 +97,5 @@ export default defineComponent({
         {[...Array(props.count)].map((_, idx) => renderIcon(idx))}
       </div>
     )
-  },
+  }
 })

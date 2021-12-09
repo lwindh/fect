@@ -1,5 +1,6 @@
 import { defineComponent, watch } from 'vue'
-import { createName, useState, useExpose } from '../utils'
+import { useState } from '@fect-ui/vue-hooks'
+import { createName, useExpose } from '../utils'
 import { Tooltip, TooltipProps } from '../tooltip'
 import { props } from './props'
 
@@ -34,7 +35,7 @@ export default defineComponent({
       showAfter: props.showAfter,
       trigger: props.trigger,
       offset: props.offset,
-      portalClass: `popover ${props.portalClass}`,
+      portalClass: `popover ${props.portalClass}`
     }
 
     return () => (
@@ -42,5 +43,5 @@ export default defineComponent({
         {slots.widget?.()}
       </Tooltip>
     )
-  },
+  }
 })

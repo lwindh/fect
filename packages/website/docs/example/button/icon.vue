@@ -1,16 +1,16 @@
 <template>
   <div>
     <fe-button size="mini" auto>
-      <template #icon><github /></template>
+      <template #icon><Github /></template>
     </fe-button>
     <fe-spacer />
     <fe-button type="success">
-      <template #icon><settings /></template>
+      <template #icon><Settings /></template>
       Button
     </fe-button>
     <fe-spacer />
     <fe-button type="success" ghost size="small">
-      <template #icon><github /></template>
+      <template #icon><Github /></template>
       Button
     </fe-button>
   </div>
@@ -18,6 +18,6 @@
 
 <script>
 export default {
-  name: 'ExButtonIcon',
+  name: 'ExButtonIcon'
 }
 </script>

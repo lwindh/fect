@@ -11,8 +11,10 @@
   ],
   "license": "MIT",
   "scripts": {
+    "prepare": "husky install",
     "cli": "cd packages/cli && yarn tsc",
     "compile": "lerna exec --scope @fect-ui/vue -- yarn build",
+    "volar": "lerna exec --scope @fect-ui/vue -- yarn volar",
     "collect": "lerna exec --scope @fect-ui/vue -- yarn collect",
     "icon": "lerna exec --scope @fect-ui/vue-icons -- yarn build",
     "build": "lerna exec --scope @fect-ui/website -- yarn build",
@@ -38,10 +40,5 @@
     "lint-staged": "^11.2.3",
     "vue": "^3.2.20",
     "typescript": "^4.4.4"
-  },
-  "eslintConfig": {
-    "extends": [
-      "kagura"
-    ]
   }
 }

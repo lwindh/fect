@@ -1,37 +1,11 @@
-import { PropType, Ref, defineComponent } from 'vue'
-import { createProvider } from '@fect-ui/vue-hooks'
-import { createName, useState, NormalSizes } from '../utils'
+import { PropType, defineComponent } from 'vue'
+import { createProvider, useState } from '@fect-ui/vue-hooks'
+import { createName, NormalSizes } from '../utils'
+import { READNONLY_RADIO_KEY } from './type'
+import type { RadioEvent, Parent } from './type'
 import './index.less'
 
 const name = createName('RadioGroup')
-
-export const READNONLY_RADIO_KEY = 'radioKey'
-
-type Parent = number | string
-
-export type RadioGroupProvide = {
-  props: {
-    modelValue: string | number
-    useRow: boolean
-    disabled: boolean
-    size: NormalSizes
-  }
-  updateState: (val: RadioEvent) => void
-  parentValue: Ref<Parent>
-  setCurrentValue: (val: Parent) => void
-}
-
-interface RadioEeventTarget {
-  checked?: boolean
-  checkedVal?: string | number
-}
-
-export interface RadioEvent {
-  target: RadioEeventTarget
-  stopPropagation: () => void
-  preventDefault: () => void
-  nativeEvent: Event
-}
 
 export default defineComponent({
   name,
@@ -41,8 +15,8 @@ export default defineComponent({
     disabled: Boolean,
     size: {
       type: String as PropType<NormalSizes>,
-      default: 'medium',
-    },
+      default: 'medium'
+    }
   },
   emits: ['change', 'update:modelValue'],
   setup(props, { slots, emit }) {
@@ -58,5 +32,5 @@ export default defineComponent({
     provider({ props, updateState, setCurrentValue, parentValue })
 
     return () => <div class={`fect-radio__group ${props.useRow ? 'useRow' : ''}`}>{slots.default?.()}</div>
-  },
+  }
 })

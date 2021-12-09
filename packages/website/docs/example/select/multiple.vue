@@ -13,8 +13,8 @@ import { ref } from 'vue'
 export default {
   name: 'ex-select-multiple',
   setup() {
-    const val = ref(['0', '1'])
+    const val = ref([])
     return { val }
-  },
+  }
 }
 </script>
