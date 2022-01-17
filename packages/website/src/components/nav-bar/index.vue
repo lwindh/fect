@@ -16,7 +16,7 @@
           <Moon v-show="theme === 'dark-theme'" size="20" />
         </div>
         <div class="fect-doc__svg-card">
-          <fe-link href="https://github.com/fay-org/fect">
+          <fe-link href="https://github.com/fect-org/fect">
             <Github size="20" />
           </fe-link>
         </div>
@@ -32,7 +32,7 @@ import { useTheme } from '@fect-ui/vue/components/utils'
 import { useWebsiteContext } from '../../website-context'
 
 export default defineComponent({
-  setup(props) {
+  setup() {
     const enNavs = ['Guide', 'Components', '中文文档']
     const zhNavs = ['指南', '组件', 'English']
     const navAttrs = ['guide', 'components']
@@ -93,8 +93,8 @@ export default defineComponent({
     width: 100%;
     height: 64px;
     box-sizing: border-box;
-    box-shadow: var(--fay-shadowSmall);
-    padding: 0 var(--fay-gap-half);
+    box-shadow: var(--fect-shadowSmall);
+    padding: 0 var(--fect-gap-half);
     position: fixed;
     top: 0;
     left: 0;
@@ -116,8 +116,8 @@ export default defineComponent({
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: var(--fay-gap-half);
-      box-shadow: var(--fay-shadowSmall);
+      margin-right: var(--fect-gap-half);
+      box-shadow: var(--fect-shadowSmall);
       border-radius: 50%;
       svg {
         color: var(--primary-foreground) !important;
@@ -143,7 +143,7 @@ export default defineComponent({
       line-height: 64px;
       > .link {
         display: inline-block;
-        padding: 0 var(--fay-gap-half);
+        padding: 0 var(--fect-gap-half);
         height: 100%;
         cursor: pointer;
         &:active {
@@ -169,7 +169,7 @@ export default defineComponent({
     display: inline-block;
     height: 100%;
     cursor: pointer;
-    padding: 0 var(--fay-gap);
+    padding: 0 var(--fect-gap);
     box-sizing: border-box;
     position: relative;
     > .fect-link {

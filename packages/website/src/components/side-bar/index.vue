@@ -6,7 +6,7 @@
         <active-cate
           @click="sideBarClickHandler(_.route)"
           :to="to(_.route)"
-          :routeName="_.title"
+          :route-name="_.title"
           :color="setActive(_.route)"
         />
       </div>
@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, watch } from 'vue'
 import { useState } from '@fect-ui/vue-hooks'
 import { zhRoutes, zhGuideRoutes } from '../../../docs/zh-cn'
 import { enGuideRoutes, enRoutes } from '../../../docs/en-us'
@@ -23,8 +23,8 @@ import ActiveCate from './active-cate.vue'
 import { useWebsiteContext } from '../../website-context'
 
 export default defineComponent({
-  components: { ActiveCate },
   name: 'SideBar',
+  components: { ActiveCate },
   setup() {
     const { context } = useWebsiteContext()
 
@@ -35,8 +35,8 @@ export default defineComponent({
     const setActive = (rt: string) => rt === currentName.value
 
     const routeList = computed(() => {
-      const { currentNav, currentLang } = context!
-      if (currentNav.value === 'components') {
+      const { currentLang, navTag } = context!
+      if (navTag.value === 'components') {
         if (currentLang.value === 'en-us') return enRoutes
         return zhRoutes
       }
@@ -44,9 +44,15 @@ export default defineComponent({
       return zhGuideRoutes
     })
 
+    watch(
+      () => context?.component.value,
+      (pre) => setCurrentName(pre!),
+      { immediate: true }
+    )
+
     const to = (route: string) => {
-      const { currentLang, currentNav } = context!
-      return `/${currentLang.value}/${currentNav.value}/${route.toLowerCase()}`
+      const { currentLang, navTag } = context!
+      return `/${currentLang.value}/${navTag.value}/${route.toLowerCase()}`
     }
 
     return {
@@ -68,7 +74,7 @@ export default defineComponent({
     overflow: auto;
     box-sizing: border-box;
     top: 120px;
-    bottom: var(--fay-gap-half);
+    bottom: var(--fect-gap-half);
     &::-webkit-scrollbar {
       width: 0;
     }
@@ -84,13 +90,13 @@ export default defineComponent({
     }
   }
   &__route-content {
-    margin-bottom: var(--fay-gap);
+    margin-bottom: var(--fect-gap);
     .title {
       text-transform: uppercase;
       letter-spacing: 1.3px;
       font-size: 0.82rem;
       color: var(--accents-4);
-      margin-bottom: var(--fay-half-gap);
+      margin-bottom: var(--fect-half-gap);
     }
   }
   &__route-children {

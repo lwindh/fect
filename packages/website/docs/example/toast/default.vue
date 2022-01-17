@@ -7,10 +7,10 @@
 <script>
 import { getCurrentInstance } from 'vue'
 export default {
-  name: 'ex-toast-default',
+  name: 'ExToastDefault',
   setup() {
     const { proxy } = getCurrentInstance()
-    const handlerClick = () => proxy.$toast({ text: 'I am test Message' })
+    const handlerClick = () => proxy.$toast({ text: 'I am test Message', closeAble: true })
     return {
       handlerClick
     }

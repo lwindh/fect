@@ -11,6 +11,7 @@ const name = createName('Drawer')
 
 export default defineComponent({
   name,
+  inheritAttrs: false,
   props,
   emits: ['update:modelValue'],
   setup(props, { slots, emit, attrs }) {
@@ -37,12 +38,12 @@ export default defineComponent({
       if (props.disableOverlayClick) return
       const element = drawerRef.value!.$el
       if (element && element.contains(e.target as Node)) return
-      setVisible(!visible.value)
+      setVisible(false)
     }
 
     return () => (
       <Teleport
-        teleport="body"
+        teleport={props.teleport}
         overlay={props.overlay}
         scroll={visible.value}
         show={visible.value}

@@ -1,10 +1,11 @@
 {
   "name": "@fect-ui/vue",
-  "version": "1.1.0-rc.0",
+  "version": "1.2.0-rc.0",
   "description": "Minimalist UI components built on Vue",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "types/index.d.ts",
+  "jsdelivr": "lib/fect.min.umd.js",
   "scripts": {
     "collect": "non collect",
     "build": "npm run collect && non compile",
@@ -16,10 +17,10 @@
     "fect",
     "vue ui"
   ],
-  "homepage": "https://github.com/fay-org/fect",
+  "homepage": "https://github.com/fect-org/fect",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fay-org/fect"
+    "url": "https://github.com/fect-org/fect"
   },
   "files": [
     "lib/",
@@ -34,9 +35,14 @@
   "devDependencies": {
     "@fect-ui/cli": "^1.0.0"
   },
+  "sideEffects": [
+    "es/**/style/*",
+    "lib/**/style/*",
+    "*.css"
+  ],
   "dependencies": {
-    "@fect-ui/themes": "^1.1.0",
-    "@fect-ui/vue-hooks": "^0.0.3-rc.0",
+    "@fect-ui/themes": "^2.0.0",
+    "@fect-ui/vue-hooks": "^1.0.0",
     "proy": "^0.0.3"
   },
   "peerDependencies": {

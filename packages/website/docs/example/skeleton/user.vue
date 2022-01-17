@@ -12,21 +12,21 @@
 
 <script>
 export default {
-  name: 'test-user'
+  name: 'TestUser'
 }
 </script>
 
 <style scoped>
 .user {
   display: inline-flex;
-  padding: 0 var(--fay-gap-half);
+  padding: 0 var(--fect-gap-half);
   justify-content: center;
   align-items: center;
   width: max-content;
   max-width: 100%;
 }
 .names {
-  margin-left: var(--fay-gap-half);
+  margin-left: var(--fect-gap-half);
   display: inline-flex;
   flex-direction: column;
   white-space: nowrap;

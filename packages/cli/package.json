@@ -3,19 +3,16 @@
   "version": "1.0.0",
   "description": "> TODO: description",
   "author": "XeryYue <812137533@qq.com>",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/XeryYue/fect.git"
   },
   "bin": {
-    "non": "./lib/index.js"
+    "non": "bin/non.js"
   },
-  "files": [
-    "lib",
-    "preset.js",
-    "ReADME.md"
-  ],
   "scripts": {
     "watch": "tsc --watch",
     "build": "tsc"
@@ -49,7 +46,10 @@
     "jest-serializer-vue": "^2.0.2",
     "jest-transform-stub": "^2.0.0",
     "@types/fs-extra": "^9.0.13",
-    "@types/node": "^16.10.5"
+    "@types/node": "^16.10.5",
+    "esbuild": "^0.14.2",
+    "parse-imports": "0.0.5",
+    "es-module-lexer":"^0.9.3"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.16",

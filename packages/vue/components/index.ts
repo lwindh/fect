@@ -1,5 +1,7 @@
-const version = '1.1.0-rc.0'
+const version = '1.2.0-rc.0'
+
 import { App } from 'vue'
+
 import { Avatar } from './avatar'
 import { AvatarGroup } from './avatar-group'
 import { BackTop } from './back-top'
@@ -50,8 +52,10 @@ import { Tab } from './tab'
 import { Tabs } from './tabs'
 import { Tag } from './tag'
 import { Teleport } from './teleport'
+import { ThemeProvide } from './theme-provide'
 import { Toast } from './toast'
 import { Tooltip } from './tooltip'
+import { User } from './user'
 const components = [
   Avatar,
   AvatarGroup,
@@ -103,9 +107,12 @@ const components = [
   Tabs,
   Tag,
   Teleport,
+  ThemeProvide,
   Toast,
-  Tooltip
+  Tooltip,
+  User
 ]
+
 const install = (app: App) => {
   components.map((component: any) => {
     if (component.install) {
@@ -166,8 +173,11 @@ export * from './tab'
 export * from './tabs'
 export * from './tag'
 export * from './teleport'
+export * from './theme-provide'
 export * from './toast'
 export * from './tooltip'
+export * from './user'
+export * from './utils/composables'
 
 export { install, version }
 

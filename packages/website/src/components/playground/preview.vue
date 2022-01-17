@@ -1,8 +1,18 @@
 <template>
   <div class="fect-doc__playground-preview" ref="contextRef">
     <div class="fect-doc__playground-operations">
-      <copy size="20" @click="copyClickHandler" />
-      <Code size="20" @click="previewClickHandler" />
+      <template v-if="!isMobile">
+        <fe-tooltip :content="tooltipText.copy">
+          <Copy size="20" @click="copyClickHandler" />
+        </fe-tooltip>
+        <fe-tooltip :content="tooltipText.code">
+          <Code size="20" @click="previewClickHandler" />
+        </fe-tooltip>
+      </template>
+      <template v-else>
+        <Copy size="20" @click="copyClickHandler" />
+        <Code size="20" @click="previewClickHandler" />
+      </template>
     </div>
     <div class="raw-content">
       <pre v-show="visible" :style="{ width: previewWidth }"><code ref="previewRef"></code></pre>
@@ -11,11 +21,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, getCurrentInstance, ComponentPublicInstance, ref, watch, onMounted } from 'vue'
+import { defineComponent, getCurrentInstance, ComponentPublicInstance, ref, watch, onMounted, computed } from 'vue'
 import { useClipboard, useState } from '@fect-ui/vue-hooks'
-import { useResize } from '@fect-ui/vue/components/utils'
+import { useWebsiteContext } from '../../website-context'
 import { Code } from '@fect-ui/vue-icons'
 import Prism from 'prismjs'
+
 export default defineComponent({
   name: 'Preview',
   components: {
@@ -30,14 +41,29 @@ export default defineComponent({
   setup(props) {
     const previewRef = ref<HTMLDivElement>()
     const contextRef = ref<HTMLDivElement>()
-    const { width } = useResize()
     const [visible, setVisible] = useState<boolean>(false)
     const [previewWidth, setpreviewWidth] = useState<string>('auto')
     const { proxy } = getCurrentInstance()!
     const { copyText } = useClipboard()
+    const { context } = useWebsiteContext()
+
     const previewClickHandler = () => {
       setVisible(!visible.value)
     }
+
+    const tooltipText = computed(() => {
+      const { currentLang } = context!
+      const zhTooltips = {
+        copy: '复制代码',
+        code: '代码'
+      }
+      const enTooltips = {
+        copy: 'Copy code',
+        code: 'Code'
+      }
+      return currentLang.value === 'en-us' ? enTooltips : zhTooltips
+    })
+
     const copyClickHandler = () => {
       copyText(decodeURIComponent(props.code))
       if (proxy) {
@@ -56,7 +82,7 @@ export default defineComponent({
     }
 
     onMounted(updatePreviewWidth)
-    watch(width, (pre) => updatePreviewWidth())
+    watch(context!.width, (pre) => updatePreviewWidth())
 
     watch(visible, (pre) => {
       if (pre) {
@@ -71,10 +97,12 @@ export default defineComponent({
     return {
       visible,
       previewRef,
+      tooltipText,
       copyClickHandler,
       previewClickHandler,
       previewWidth,
-      contextRef
+      contextRef,
+      isMobile: context!.mobile
     }
   }
 })
@@ -87,10 +115,10 @@ export default defineComponent({
 
 .fect-doc {
   &__playground-preview {
-    margin-top: var(--fay-gap);
+    margin-top: var(--fect-gap);
     border-top: 1px solid var(--accents-2);
-    border-bottom-left-radius: var(--fay-radius);
-    border-bottom-right-radius: var(--fay-radius);
+    border-bottom-left-radius: var(--fect-radius);
+    border-bottom-right-radius: var(--fect-radius);
     p {
       text-align: center;
       user-select: none;
@@ -109,9 +137,13 @@ export default defineComponent({
   }
   &__playground-operations {
     text-align: right;
-    padding-top: var(--fay-gap-half);
+    padding-top: var(--fect-gap-half);
     svg {
       margin-right: 10px;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.65;
+      }
     }
   }
 }

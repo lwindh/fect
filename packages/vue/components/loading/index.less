@@ -1,3 +1,63 @@
+@loading-default-color: var(--accents-7);
+@loading-success-color: var(--success-default);
+@loading-warning-color: var(--warning-default);
+@loading-error-color: var(--error-dark);
+// default load type
+@loading-default-mini-size: 4px;
+@loading-default-medium-size: 5px;
+@loading-default-small-size: 6px;
+@loading-default-large-size: 7px;
+// cube
+@loading-cube-mini-size: 5px;
+@loading-cube-small-size: 8px;
+@loading-cube-medium-size: 10px;
+@loading-cube-large-size: 13px;
+
+// wave
+
+@loading-wave-mini-size: 5px;
+@loading-wave-small-size: 8px;
+@loading-wave-medium-size: 10px;
+@loading-wave-large-size: 12px;
+
+// circle
+
+@loading-circle-mini-size: 20px;
+@loading-circle-small-size: 25px;
+@loading-circle-medium-size: 30px;
+@loading-circle-large-size: 35px;
+
+:root {
+  --loading-default-color: @loading-default-color;
+  --loading-success-color: @loading-success-color;
+  --loading-warning-color: @loading-warning-color;
+  --loading-error-color: @loading-error-color;
+  // default load type
+  --loading-default-mini-size: @loading-default-mini-size;
+  --loading-default-medium-size: @loading-default-medium-size;
+  --loading-default-small-size: @loading-default-small-size;
+  --loading-default-large-size: @loading-default-large-size;
+  // cube
+  --loading-cube-mini-size: @loading-cube-mini-size;
+  --loading-cube-small-size: @loading-cube-small-size;
+  --loading-cube-medium-size: @loading-cube-medium-size;
+  --loading-cube-large-size: @loading-cube-large-size;
+
+  // wave
+
+  --loading-wave-mini-size: @loading-wave-mini-size;
+  --loading-wave-small-size: @loading-wave-small-size;
+  --loading-wave-medium-size: @loading-wave-medium-size;
+  --loading-wave-large-size: @loading-wave-large-size;
+
+  // circle
+
+  --loading-circle-mini-size: @loading-circle-mini-size;
+  --loading-circle-small-size: @loading-circle-small-size;
+  --loading-circle-medium-size: @loading-circle-medium-size;
+  --loading-circle-large-size: @loading-circle-large-size;
+}
+
 @keyframes loading-blink {
   0% {
     opacity: 0.2;
@@ -36,6 +96,23 @@
   }
 }
 
+@keyframes loading-circle {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -40;
+  }
+
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -120;
+  }
+}
+
 .fect-loading {
   display: inline-block;
   align-items: center;
@@ -44,16 +121,16 @@
   height: 100%;
   i {
     &.default {
-      background-color: var(--accents-7);
+      background-color: var(--loading-default-color);
     }
     &.success {
-      background-color: var(--success-default);
+      background-color: var(--loading-success-color);
     }
     &.warning {
-      background-color: var(--warning-default);
+      background-color: var(--loading-warning-color);
     }
     &.error {
-      background-color: var(--error-dark);
+      background-color: var(--loading-error-color);
     }
   }
   .loading {
@@ -69,8 +146,8 @@
     background-color: transparent;
     user-select: none;
     &__default {
-      width: 5px;
-      height: 5px;
+      width: var(--loading-default-medium-size);
+      height: var(--loading-default-medium-size);
       border-radius: 50%;
       margin: 0 1px;
       display: inline-block;
@@ -82,16 +159,16 @@
         animation-delay: 0.4s;
       }
       &.mini {
-        width: 4px;
-        height: 4px;
+        width: var(--loading-default-mini-size);
+        height: var(--loading-default-mini-size);
       }
       &.small {
-        height: 6px;
-        width: 6px;
+        width: var(--loading-default-small-size);
+        height: var(--loading-default-small-size);
       }
       &.large {
-        width: 7px;
-        height: 7px;
+        width: var(--loading-default-large-size);
+        height: var(--loading-default-large-size);
       }
       &:nth-child(2) {
         animation-delay: 0.2s;
@@ -104,19 +181,19 @@
       border-radius: 0;
       transform-origin: right bottom;
       animation: loding-cube 1.4s ease infinite;
-      height: 10px;
-      width: 10px;
+      width: var(--loading-cube-medium-size);
+      height: var(--loading-cube-medium-size);
       &.mini {
-        width: 5px;
-        height: 5px;
+        width: var(--loading-cube-mini-size);
+        height: var(--loading-cube-mini-size);
       }
       &.small {
-        height: 8px;
-        width: 8px;
+        width: var(--loading-cube-small-size);
+        height: var(--loading-cube-small-size);
       }
       &.large {
-        width: 13px;
-        height: 13px;
+        width: var(--loading-cube-large-size);
+        height: var(--loading-cube-large-size);
       }
       &:nth-child(1) {
         animation-delay: 0.2s;
@@ -139,20 +216,20 @@
     &__wave {
       border-radius: 0;
       animation: 1.4s ease infinite loding-wave;
-      height: 10px;
-      width: 5px;
+      height: var(--loading-wave-medium-size);
+      width: calc(var(--loading-wave-medium-size) / 2);
 
       &.mini {
-        width: 2.5px;
-        height: 5px;
+        height: var(--loading-wave-mini-size);
+        width: calc(var(--loading-wave-mini-size) / 2);
       }
       &.small {
-        height: 8px;
-        width: 4px;
+        height: var(--loading-wave-small-size);
+        width: calc(var(--loading-wave-small-size) / 2);
       }
       &.large {
-        width: 6px;
-        height: 12px;
+        height: var(--loading-wave-large-size);
+        width: calc(var(--loading-wave-large-size) / 2);
       }
       &:nth-child(1) {
         animation-delay: -1.2s;
@@ -172,6 +249,40 @@
 
       &:nth-child(5) {
         animation-delay: -0.8s;
+      }
+    }
+    &__circle {
+      display: block;
+      height: var(--loading-circle-medium-size);
+      width: var(--loading-circle-medium-size);
+      &.default {
+        color: var(--loading-default-color);
+      }
+      &.success {
+        color: var(--loading-success-color);
+      }
+      &.warning {
+        color: var(--loading-warning-color);
+      }
+      &.error {
+        color: var(--loading-error-color);
+      }
+      &.mini {
+        height: var(--loading-circle-mini-size);
+        width: var(--loading-circle-mini-size);
+      }
+      &.small {
+        height: var(--loading-circle-small-size);
+        width: var(--loading-circle-small-size);
+      }
+      &.large {
+        height: var(--loading-circle-large-size);
+        width: var(--loading-circle-large-size);
+      }
+      circle {
+        animation: loading-circle 1.5s ease-in-out infinite;
+        stroke-width: 3;
+        stroke-linecap: round;
       }
     }
   }

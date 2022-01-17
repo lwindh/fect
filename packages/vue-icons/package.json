@@ -29,9 +29,10 @@
   "peerDependencies": {
     "vue": "^3.0.11"
   },
-  "homepage": "https://github.com/fay-org/fect",
+  "sideEffects":false,
+  "homepage": "https://github.com/fect-org/fect",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fay-org/fect"
+    "url": "https://github.com/fect-org/fect"
   }
 }

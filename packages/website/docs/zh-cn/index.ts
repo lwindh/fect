@@ -14,6 +14,7 @@ export const zhRoutes: Routes = [
   {
     name: '通用',
     children: [
+      { title: '主题配置 Theme', route: 'ThemeProvide' },
       { title: '按钮 Button', route: 'Button' },
       { title: '代码 Code', route: 'Code' },
       { title: '图标', route: 'Icons' },
@@ -60,6 +61,7 @@ export const zhRoutes: Routes = [
       { title: '图片 Image', route: 'Image' },
       { title: '骨架屏 Skeleton', route: 'Skeleton' },
       { title: '标签 Tag', route: 'Tag' },
+      { title: '用户 User', route: 'User' },
       { title: '轮播 Swipe', route: 'Swipe' }
     ]
   },

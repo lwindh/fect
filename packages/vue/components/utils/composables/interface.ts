@@ -20,3 +20,8 @@ export interface DraggableOptions {
 export interface DraggableOutput {
   position: Ref<Position>
 }
+
+export type Theme = 'light-theme' | 'dark-theme'
+
+export type WinWidth = Ref<number>
+export type WinHeight = Ref<number>
